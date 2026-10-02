@@ -1,0 +1,7 @@
+{
+  "name": "Pomodoro Timer",
+  "description": "A clean offline Android Pomodoro focus timer with ViewModel, Material 3, and accurate interval tracking.",
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,9 +1,0 @@
-<resources>
-    <style name="Theme.Pomodoro" parent="android:style/Theme.Material.Light.NoActionBar">
-        <item name="android:fontFamily">sans</item>
-        <item name="android:colorAccent">#E85D4A</item>
-        <item name="android:navigationBarColor">#FFF8F5</item>
-        <item name="android:statusBarColor">#FFF8F5</item>
-        <item name="android:windowLightStatusBar">true</item>
-    </style>
-</resources>
