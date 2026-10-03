@@ -11,6 +11,12 @@ gradle-app.setting
 # Avoid ignore Gradle wrappper properties
 !gradle-wrapper.properties
 
+# Local configuration
+local.properties
+.idea/
+*.iml
+.DS_Store
+
 # Cache of project
 .gradletasknamecache
 
