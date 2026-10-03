@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Timer Top Crown / Button -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M51,19 h6 v3 h-6 z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M52.5,22 h3 v3 h-3 z" />
+
+    <!-- Clock / Timer Outer Ring -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M54,25 A18,18 0 1,1 53.99,25" />
+
+    <!-- Clock Dial 25-minute Pomodoro Arc highlight -->
+    <path
+        android:strokeColor="#FFCDD2"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000"
+        android:pathData="M54,25 A18,18 0 0,1 66.7,55.7" />
+
+    <!-- Clock Hands (Pointing at 25-minute focus mark) -->
+    <!-- Hand to 12 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.8"
+        android:strokeLineCap="round"
+        android:pathData="M54,43 L54,31" />
+    <!-- Hand to 25 min mark (~5 o'clock) -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.8"
+        android:strokeLineCap="round"
+        android:pathData="M54,43 L63,50" />
+    <!-- Center Pivot Pin -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,40.5 A2.5,2.5 0 1,1 53.99,40.5" />
+
+    <!-- Study Book: Open Pages -->
+    <!-- Left Page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,72 C42,67 34,67 26,70 L26,76 C34,73 42,73 54,78 Z" />
+    <!-- Right Page -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,72 C66,67 74,67 82,70 L82,76 C74,73 66,73 54,78 Z" />
+
+    <!-- Book Spine & Centerfold Accent -->
+    <path
+        android:strokeColor="#FFCDD2"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M54,72 L54,78" />
+
+    <!-- Book Page Lines (Left) -->
+    <path
+        android:strokeColor="#E53935"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:pathData="M31,73 C37,70.5 43,70.5 50,73.5" />
+    <!-- Book Page Lines (Right) -->
+    <path
+        android:strokeColor="#E53935"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:pathData="M58,73.5 C65,70.5 71,70.5 77,73" />
+</vector>

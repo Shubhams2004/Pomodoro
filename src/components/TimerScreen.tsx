@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mode } from '../types';
-import { Play, Pause, RotateCcw, Settings as SettingsIcon, SkipForward, Volume2, VolumeX } from 'lucide-react';
+import { Play, Pause, RotateCcw, Settings as SettingsIcon, SkipForward, Volume2, VolumeX, Maximize2 } from 'lucide-react';
 
 interface TimerScreenProps {
   mode: Mode;
@@ -15,6 +15,7 @@ interface TimerScreenProps {
   onSkip: () => void;
   onToggleSound: () => void;
   onSettings: () => void;
+  onEnterFocusMode?: () => void;
   onSelectMode?: (mode: Mode) => void;
 }
 
@@ -31,6 +32,7 @@ export const TimerScreen: React.FC<TimerScreenProps> = ({
   onSkip,
   onToggleSound,
   onSettings,
+  onEnterFocusMode,
   onSelectMode,
 }) => {
   const minutes = Math.floor(remaining / 60);
@@ -92,6 +94,17 @@ export const TimerScreen: React.FC<TimerScreenProps> = ({
           </h1>
         </div>
         <div className="flex items-center gap-1">
+          {onEnterFocusMode && (
+            <button
+              type="button"
+              onClick={onEnterFocusMode}
+              aria-label="Enter Focus Mode"
+              title="Full-screen Focus Mode"
+              className="p-2 text-stone-600 hover:text-stone-900 hover:bg-stone-200/60 rounded-full transition-colors cursor-pointer"
+            >
+              <Maximize2 size={19} />
+            </button>
+          )}
           <button
             type="button"
             onClick={onToggleSound}

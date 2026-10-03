@@ -3,6 +3,7 @@ import confetti from 'canvas-confetti';
 import { Mode, PomodoroSettings, DEFAULT_SETTINGS } from './types';
 import { TimerScreen } from './components/TimerScreen';
 import { SettingsScreen } from './components/SettingsScreen';
+import { FocusModeView } from './components/FocusModeView';
 import { soundManager } from './utils/sound';
 
 const STORAGE_KEY_SETTINGS = 'pomodoro_settings';
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
   const [running, setRunning] = useState<boolean>(false);
   const [remaining, setRemaining] = useState<number>(() => settings.focusMinutes * 60);
   const [showSettings, setShowSettings] = useState<boolean>(false);
+  const [isFocusMode, setIsFocusMode] = useState<boolean>(false);
 
   // Save settings when changed
   useEffect(() => {
@@ -176,15 +178,20 @@ export const App: React.FC = () => {
       } else if (e.code === 'KeyR') {
         e.preventDefault();
         resetTimer(mode);
-      } else if (e.code === 'Escape' && showSettings) {
-        e.preventDefault();
-        setShowSettings(false);
+      } else if (e.code === 'Escape') {
+        if (isFocusMode) {
+          e.preventDefault();
+          setIsFocusMode(false);
+        } else if (showSettings) {
+          e.preventDefault();
+          setShowSettings(false);
+        }
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [mode, showSettings, resetTimer]);
+  }, [mode, showSettings, isFocusMode, resetTimer]);
 
   // Update specific setting and adjust active timer if paused in that mode
   const handleUpdateSetting = <K extends keyof PomodoroSettings>(key: K, value: PomodoroSettings[K]) => {
@@ -217,7 +224,6 @@ export const App: React.FC = () => {
 
   const handleRequestNotifications = async () => {
     if (!('Notification' in window)) {
-      alert('This browser does not support desktop notifications.');
       return;
     }
 
@@ -246,6 +252,19 @@ export const App: React.FC = () => {
     }
   };
 
+  if (isFocusMode) {
+    return (
+      <FocusModeView
+        mode={mode}
+        remaining={remaining}
+        running={running}
+        onToggle={() => setRunning((prev) => !prev)}
+        onReset={() => resetTimer(mode)}
+        onExit={() => setIsFocusMode(false)}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col justify-center items-center text-stone-900 transition-colors">
       {showSettings ? (
@@ -271,6 +290,7 @@ export const App: React.FC = () => {
           onSkip={nextMode}
           onToggleSound={handleToggleSound}
           onSettings={() => setShowSettings(true)}
+          onEnterFocusMode={() => setIsFocusMode(true)}
           onSelectMode={handleSelectMode}
         />
       )}
